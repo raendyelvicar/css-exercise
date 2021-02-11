@@ -17,23 +17,19 @@ function scrollToTop(e) {
 };
 
 function toggleFunction(){
-    if(!isActive){
+    if(isActive){
         navItems.classList.remove("show");
         navToggle.classList.remove("active");
-        isActive = true;
-    }else{
+        isActive = false;
+    }
+    else{
         navItems.classList.add("show");
         navToggle.classList.add("active");
-        isActive = false;
+        isActive = true;
     }
 };
 
 function restartToggle() {
-    if(!isActive){
-        isActive=false;
-        toggleFunction();
-    }else{
         isActive = true;
         toggleFunction();
-    }
 };

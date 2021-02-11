@@ -6,6 +6,7 @@
 }
 :root{
     --primary-color : #0400CB;
+    --hover-blue :#0400ff;
     --background-color :#F6F6F6;
     --white : #ffffff;
     --text-color : #111111;
@@ -18,7 +19,7 @@ html{
 body{
     font-family: 'Poppins', sans-serif;
     background-color: var(--background-color);
-    overflow-x: hidden;
+    overflow-x:hidden;
 }
 
 h1{
@@ -73,14 +74,31 @@ nav ul li{
     margin: 0 32px;
     font-size: 18px;
     font-weight: 500;
+    height: 100%
 }
+
+nav ul li::after{
+    content: '';
+    width: 0;
+    height: 3px;
+    background: var(--hover-blue);
+    display: block;
+    margin: auto;
+    top: 30%;
+    -webkit-transition: .2s;
+    transition: .2s;
+}
+
+nav ul li:hover::after {
+    width: 100%;
+  }
 
 nav ul li a{
     color: #0400CB;
 }
 
 nav ul li a:hover{
-    color: #1e1aff;
+    color: var(--hover-blue);
 }
 
 nav .nav-logo{
@@ -163,7 +181,7 @@ nav .nav-toggle span{
 }
 
 .hero-content .button-section .cv-button:hover{
-    background-color: var(--primary-color);
+    background-color: var(--hover-blue);
     color: var(--white);
 }
 
@@ -172,7 +190,6 @@ nav .nav-toggle span{
     color: var(--text-color);
     text-align: center;
 }
-
 
 .hero-content .button-section .contact-button:hover{
     background-color: #c7e1fd;
@@ -246,6 +263,7 @@ nav .nav-toggle span{
     transition: all .5s ease;
     opacity: 0;
     visibility: hidden;
+    z-index: 1;
 }
 
 #scrollToTopBtn.show {
@@ -256,6 +274,11 @@ nav .nav-toggle span{
 
 @media screen and (max-width:765px){
 
+    nav {
+        position: sticky;
+        z-index: 10;
+    }
+
     nav .nav-logo{
         margin-left: 35px;
     }
@@ -264,7 +287,7 @@ nav .nav-toggle span{
         margin-right: 35px;
         z-index: 9999;
     }
-
+    
     .nav-toggle.active .line:nth-of-type(1){
         -webkit-transform: rotate(45deg);
         -ms-transform: rotate(45deg);
@@ -294,33 +317,40 @@ nav .nav-toggle span{
         -webkit-transform: rotate(0);
         -ms-transform: rotate(0);
         transform: rotate(0);
+        transition: 0.3s ease-in;
     }
 
     .nav-toggle .line:nth-of-type(2){
         opacity: 1;
-	    filter: alpha(opacity=100);
+        filter: alpha(opacity=100);
+        transition: 0.3s ease-in;
     }
     .nav-toggle .line:nth-of-type(3){
         -webkit-transform: rotate(0);
         -ms-transform: rotate(0);
         transform: rotate(0);
+         transition: 0.3s ease-in;
     }
 
     .nav-items{
         background-color: #0400CB;
-        opacity: 90%;
-        position: absolute;
+        position: fixed;
         margin: 0;
         width: 80%;
         top: 0;
         right: 0;
-        height: 100vh;
+        height:100vh;
         z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
         transform: translateX(100%);
-        transition: 0.3s ease-in;
+        transition: 0.5s ease-in;
+        overflow-x: hidden;
     }
 
     .nav-items.show{
+        opacity: 90%;
+        visibility: visible;
         transform: translateX(0);
     }
 
@@ -330,8 +360,8 @@ nav .nav-toggle span{
         flex-direction: column;
         justify-content:center;
         align-items: flex-end;
-        /* margin: auto; */
-        top:10%;
+        top:7%;
+        right: 5%;
         z-index: 9999;
     }
 
@@ -350,9 +380,8 @@ nav .nav-toggle span{
 
     .hero-section{
         flex-wrap: wrap-reverse;
-        margin-bottom: 50px;
+        margin-bottom: 100px;
         z-index: 1;
-        margin-bottom: 150px;
     }
 
     .hero-section .hero-content{
@@ -387,6 +416,7 @@ nav .nav-toggle span{
     }
 
     .about-section{
+        position: relative;
         margin-left: 0px;
         margin-right: 0px;
         padding: 0;
@@ -396,6 +426,7 @@ nav .nav-toggle span{
         font-size: 56px;
         text-align: center;
         position: relative;
+        z-index: 1;
     }
 
     .about-content{
@@ -415,21 +446,23 @@ nav .nav-toggle span{
         height: auto;
     }
 
+    .about-content #item-1:hover img{
+        transform: scale(0.5, 0.5);
+    }
+    
     .about-content #item-2{
         margin-left: 0;
         margin: auto;
         width: 80%;
         position: relative;
         top: -280px;
+        z-index: 1;
     }
 
     .hide-for-desktop{
         display: block;
     }
 
-    /* .hide-for-mobile{
-        display: none;
-    } */
 }
 
 @media screen and (min-width:765.01px) and (max-width:1024px){
@@ -487,6 +520,7 @@ nav .nav-toggle span{
         margin-top: 100px;
         padding:0;
         padding-top: 50px;
+        z-index: 1;
 
     }
 
@@ -499,6 +533,7 @@ nav .nav-toggle span{
     .about-content{
         flex-wrap: wrap;
         position: absolute;
+        z-index: 100;
     }
         
     .about-content #item-1{
@@ -516,6 +551,7 @@ nav .nav-toggle span{
     .about-content #item-1 img{
         width: 100%;
         height: auto;
+        z-index: 100;
     }
 
     .about-content #item-2{
@@ -524,6 +560,7 @@ nav .nav-toggle span{
         width: 80%;
         position: relative;
         top: -580px;
+        z-index: 100;
     }
 
 }

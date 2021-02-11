@@ -50,7 +50,6 @@ nav{
     background-color: var(--white);
     top: 0;
     left: 0;
-    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -74,7 +73,6 @@ nav ul li{
     margin: 0 32px;
     font-size: 18px;
     font-weight: 500;
-    height: 100%
 }
 
 nav ul li::after{
@@ -132,6 +130,7 @@ nav .nav-toggle span{
     justify-content: center;
     height: 88vh;
     margin: auto;
+    margin-bottom: 100px;
     /* background-color: blue; */
 }
 
@@ -380,7 +379,6 @@ nav .nav-toggle span{
 
     .hero-section{
         flex-wrap: wrap-reverse;
-        margin-bottom: 100px;
         z-index: 1;
     }
 
@@ -483,6 +481,10 @@ nav .nav-toggle span{
         margin-right: 0;
     }
 
+    nav ul li::after{
+       display: none;
+    }
+    
     .hero-section{
         flex-direction: column-reverse;
     }
